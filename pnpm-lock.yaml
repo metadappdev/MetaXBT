@@ -23,18 +23,57 @@ importers:
       amqplib:
         specifier: 0.10.5
         version: 0.10.5
+      axios:
+        specifier: 1.7.8
+        version: 1.7.8(debug@4.4.0)
+      chalk:
+        specifier: ^5.3.0
+        version: 5.3.0
+      cli-table3:
+        specifier: ^0.6.5
+        version: 0.6.5
       csv-parse:
         specifier: 5.6.0
         version: 5.6.0
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
+      dotenv:
+        specifier: 16.4.5
+        version: 16.4.5
+      inquirer:
+        specifier: ^12.2.0
+        version: 12.2.0(@types/node@22.8.4)
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
+      node-cron:
+        specifier: ^3.0.3
+        version: 3.0.3
       ollama-ai-provider:
         specifier: 0.16.1
         version: 0.16.1(zod@3.23.8)
       optional:
         specifier: 0.1.4
         version: 0.1.4
+      ora:
+        specifier: ^8.1.1
+        version: 8.1.1
+      papaparse:
+        specifier: ^5.4.1
+        version: 5.4.1
       pnpm:
         specifier: 9.14.4
         version: 9.14.4
+      puppeteer-cluster:
+        specifier: ^0.24.0
+        version: 0.24.0(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+      puppeteer-extra-plugin-adblocker:
+        specifier: ^2.13.6
+        version: 2.13.6(encoding@0.1.13)(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+      puppeteer-extra-plugin-stealth:
+        specifier: ^2.11.2
+        version: 2.11.2(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
       sharp:
         specifier: 0.33.5
         version: 0.33.5
@@ -48,6 +87,12 @@ importers:
       '@commitlint/config-conventional':
         specifier: 18.6.3
         version: 18.6.3
+      '@types/node-cron':
+        specifier: ^3.0.11
+        version: 3.0.11
+      '@types/papaparse':
+        specifier: ^5.3.15
+        version: 5.3.15
       '@typescript-eslint/eslint-plugin':
         specifier: 8.16.0
         version: 8.16.0(@typescript-eslint/parser@8.16.0(eslint@9.16.0(jiti@2.4.0))(typescript@5.6.3))(eslint@9.16.0(jiti@2.4.0))(typescript@5.6.3)
@@ -752,7 +797,7 @@ importers:
         version: 2.79.2
       ts-jest:
         specifier: 29.2.5
-        version: 29.2.5(@babel/core@7.26.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.26.0))(jest@29.7.0(@types/node@22.8.4)(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3)))(typescript@5.6.3)
+        version: 29.2.5(@babel/core@7.26.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.26.0))(esbuild@0.24.0)(jest@29.7.0(@types/node@22.8.4)(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3)))(typescript@5.6.3)
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3)
@@ -2568,6 +2613,12 @@ packages:
     peerDependencies:
       playwright: ^1.x
 
+  '@cliqz/adblocker-puppeteer@1.23.8':
+    resolution: {integrity: sha512-Ca1/DBqQXsOpKTFVAHX6OpLTSEupXmUkUWHj6iXhLLleC7RPISN5B0b801VDmaGRqoC5zKRxn0vYbIfpgCWVug==}
+    deprecated: This project has been renamed to @ghostery/adblocker-puppeteer. Install using @ghostery/adblocker-puppeteer instead
+    peerDependencies:
+      puppeteer: '>5'
+
   '@cliqz/adblocker@1.34.0':
     resolution: {integrity: sha512-d7TeUl5t+TOMJe7/CRYtf+x6hbd8N25DtH7guQTIjjr3AFVortxiAIgNejGvVqy0by4eNByw+oVil15oqxz2Eg==}
     deprecated: This project has been renamed to @ghostery/adblocker. Install using @ghostery/adblocker instead
@@ -3981,6 +4032,86 @@ packages:
     resolution: {integrity: sha512-ERft9/0/8CmYalqOVnJnpdDry28q+j+nAlFFARdjyxXDJ+Mhgv9+F600QC8BR9ygOfrXRlAk6CvST2j+JCpQPg==}
     peerDependencies:
       google-protobuf: ^3.14.0
+
+  '@inquirer/checkbox@4.0.3':
+    resolution: {integrity: sha512-CEt9B4e8zFOGtc/LYeQx5m8nfqQeG/4oNNv0PUvXGG0mys+wR/WbJ3B4KfSQ4Fcr3AQfpiuFOi3fVvmPfvNbxw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/confirm@5.1.0':
+    resolution: {integrity: sha512-osaBbIMEqVFjTX5exoqPXs6PilWQdjaLhGtMDXMXg/yxkHXNq43GlxGyTA35lK2HpzUgDN+Cjh/2AmqCN0QJpw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/core@10.1.1':
+    resolution: {integrity: sha512-rmZVXy9iZvO3ZStEe/ayuuwIJ23LSF13aPMlLMTQARX6lGUBDHGV8UB5i9MRrfy0+mZwt5/9bdy8llszSD3NQA==}
+    engines: {node: '>=18'}
+
+  '@inquirer/editor@4.2.0':
+    resolution: {integrity: sha512-Z3LeGsD3WlItDqLxTPciZDbGtm0wrz7iJGS/uUxSiQxef33ZrBq7LhsXg30P7xrWz1kZX4iGzxxj5SKZmJ8W+w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/expand@4.0.3':
+    resolution: {integrity: sha512-MDszqW4HYBpVMmAoy/FA9laLrgo899UAga0itEjsYrBthKieDZNc0e16gdn7N3cQ0DSf/6zsTBZMuDYDQU4ktg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/figures@1.0.8':
+    resolution: {integrity: sha512-tKd+jsmhq21AP1LhexC0pPwsCxEhGgAkg28byjJAd+xhmIs8LUX8JbUc3vBf3PhLxWiB5EvyBE5X7JSPAqMAqg==}
+    engines: {node: '>=18'}
+
+  '@inquirer/input@4.1.0':
+    resolution: {integrity: sha512-16B8A9hY741yGXzd8UJ9R8su/fuuyO2e+idd7oVLYjP23wKJ6ILRIIHcnXe8/6AoYgwRS2zp4PNsW/u/iZ24yg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/number@3.0.3':
+    resolution: {integrity: sha512-HA/W4YV+5deKCehIutfGBzNxWH1nhvUC67O4fC9ufSijn72yrYnRmzvC61dwFvlXIG1fQaYWi+cqNE9PaB9n6Q==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/password@4.0.3':
+    resolution: {integrity: sha512-3qWjk6hS0iabG9xx0U1plwQLDBc/HA/hWzLFFatADpR6XfE62LqPr9GpFXBkLU0KQUaIXZ996bNG+2yUvocH8w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/prompts@7.2.0':
+    resolution: {integrity: sha512-ZXYZ5oGVrb+hCzcglPeVerJ5SFwennmDOPfXq1WyeZIrPGySLbl4W6GaSsBFvu3WII36AOK5yB8RMIEEkBjf8w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/rawlist@4.0.3':
+    resolution: {integrity: sha512-5MhinSzfmOiZlRoPezfbJdfVCZikZs38ja3IOoWe7H1dxL0l3Z2jAUgbBldeyhhOkELdGvPlBfQaNbeLslib1w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/search@3.0.3':
+    resolution: {integrity: sha512-mQTCbdNolTGvGGVCJSI6afDwiSGTV+fMLPEIMDJgIV6L/s3+RYRpxt6t0DYnqMQmemnZ/Zq0vTIRwoHT1RgcTg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/select@4.0.3':
+    resolution: {integrity: sha512-OZfKDtDE8+J54JYAFTUGZwvKNfC7W/gFCjDkcsO7HnTH/wljsZo9y/FJquOxMy++DY0+9l9o/MOZ8s5s1j5wmw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
+  '@inquirer/type@3.0.1':
+    resolution: {integrity: sha512-+ksJMIy92sOAiAccGpcKZUc3bYO07cADnscIxHBknEm3uNts3movSmBofc1908BNy5edKscxYeAdaX1NXkHS6A==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -6455,6 +6586,9 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
+  '@types/node-cron@3.0.11':
+    resolution: {integrity: sha512-0ikrnug3/IyneSHqCBeslAhlK2aBfYek1fGo4bP4QnZPmiqSGRK+Oy7ZMisLWkesffJvQ1cqAcBnJC+8+nxIAg==}
+
   '@types/node-fetch@2.6.12':
     resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
 
@@ -6484,6 +6618,9 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/papaparse@5.3.15':
+    resolution: {integrity: sha512-JHe6vF6x/8Z85nCX4yFdDslN11d+1pr12E526X8WAfhadOeaOTx5AuIkvDKIBopfvlzpzkdMx4YyvSKCM9oqtw==}
 
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -7973,6 +8110,10 @@ packages:
     resolution: {integrity: sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==}
     engines: {node: '>= 10'}
 
+  cli-width@4.1.0:
+    resolution: {integrity: sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ==}
+    engines: {node: '>= 12'}
+
   client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
 
@@ -8714,6 +8855,9 @@ packages:
   date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
+
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
   dateformat@3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
@@ -10535,6 +10679,12 @@ packages:
   inline-style-parser@0.2.4:
     resolution: {integrity: sha512-0aO8FkhNZlj/ZIbNi7Lxxr12obT7cL1moPfE4tg1LkX7LlLfC6DeX4l2ZEud1ukP9jNQyNnfzQVqwbwmAATY4Q==}
 
+  inquirer@12.2.0:
+    resolution: {integrity: sha512-CI0yGbyd5SS4vP7i180S9i95yI+M3ONaljfLBlNS1IIIZ7n+xbH76WzHkIHj253huRiXaKQZl8zijOl0Y0mjqg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+
   inquirer@8.2.6:
     resolution: {integrity: sha512-M1WuAmb7pn9zdFRtQYk26ZBoY043Sse0wVDdk4Bppr+JOXyQYybdtvK+l9wUibhtjdjvtoiNy8tk+EgsYIUqKg==}
     engines: {node: '>=12.0.0'}
@@ -12177,6 +12327,10 @@ packages:
     resolution: {integrity: sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
+  mute-stream@2.0.0:
+    resolution: {integrity: sha512-WWdIxpyjEn+FhQJQQv9aQAYlHoNVdzIzUySNV1gHUPDSdZJ3yZn7pAAbQcV7B56Mvu881q9FZV+0Vx2xC44VWA==}
+    engines: {node: ^18.17.0 || >=20.5.0}
+
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
@@ -12269,6 +12423,10 @@ packages:
   node-cache@5.1.2:
     resolution: {integrity: sha512-t1QzWwnk4sjLWaQAS8CHgOJ+RAfmHpxFWmc36IWTiWHQfs0w5JDMBS1b1ZxQteo0vVVuWJvIUKHDkkeK7vIGCg==}
     engines: {node: '>= 8.0.0'}
+
+  node-cron@3.0.3:
+    resolution: {integrity: sha512-dOal67//nohNgYWb+nWmg5dkFdIwDm8EpeGYMekPMrngV3637lqnX0lbUcCtgibHTz6SEz7DAIjKvKDFYCnO1A==}
+    engines: {node: '>=6.0.0'}
 
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
@@ -12743,6 +12901,9 @@ packages:
 
   pako@2.1.0:
     resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
+
+  papaparse@5.4.1:
+    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
 
   param-case@3.0.4:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
@@ -13936,6 +14097,11 @@ packages:
     resolution: {integrity: sha512-FLpr4flz5xZTSJxSeaheeMKN/EDzMdK7b8PTOC6a5PYFKTucWbdqjgqaEyH0shFiSJrVB1+Qqi4Tk19ccU6Aug==}
     engines: {node: '>=12.20'}
 
+  puppeteer-cluster@0.24.0:
+    resolution: {integrity: sha512-zHPoNsrwkFLKFtgJJv2aC13EbMASQsE048uZd7CyikEXcl+sc1Nf6PMFb9kMoZI7/zMYxvuP658o2mw079ZZyQ==}
+    peerDependencies:
+      puppeteer: '>=22.0.0'
+
   puppeteer-core@19.11.1:
     resolution: {integrity: sha512-qcuC2Uf0Fwdj9wNtaTZ2OvYRraXpAK+puwwVW8ofOhOgLPZyz1c68tsorfIZyCUOpyBisjr+xByu7BMbEYMepA==}
     engines: {node: '>=14.14.0'}
@@ -13945,8 +14111,59 @@ packages:
       typescript:
         optional: true
 
+  puppeteer-extra-plugin-adblocker@2.13.6:
+    resolution: {integrity: sha512-AftgnUZ1rg2RPe9RpX6rkYAxEohwp3iFeGIyjsAuTaIiw4VLZqOb1LSY8/S60vAxpeat60fbCajxoUetmLy4Dw==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      puppeteer: '*'
+      puppeteer-core: '*'
+      puppeteer-extra: '*'
+    peerDependenciesMeta:
+      puppeteer:
+        optional: true
+      puppeteer-core:
+        optional: true
+      puppeteer-extra:
+        optional: true
+
   puppeteer-extra-plugin-capsolver@2.0.1:
     resolution: {integrity: sha512-mohsbnHWgGR9yiLV7U5opiEBsn7k2wH9Qvs8IowurHCrQ6JoA/it6x9ZT5dJi8s6arUJPbUeE+VWpN0gH/xePQ==}
+
+  puppeteer-extra-plugin-stealth@2.11.2:
+    resolution: {integrity: sha512-bUemM5XmTj9i2ZerBzsk2AN5is0wHMNE6K0hXBzBXOzP5m5G3Wl0RHhiqKeHToe/uIH8AoZiGhc1tCkLZQPKTQ==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      playwright-extra: '*'
+      puppeteer-extra: '*'
+    peerDependenciesMeta:
+      playwright-extra:
+        optional: true
+      puppeteer-extra:
+        optional: true
+
+  puppeteer-extra-plugin-user-data-dir@2.4.1:
+    resolution: {integrity: sha512-kH1GnCcqEDoBXO7epAse4TBPJh9tEpVEK/vkedKfjOVOhZAvLkHGc9swMs5ChrJbRnf8Hdpug6TJlEuimXNQ+g==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      playwright-extra: '*'
+      puppeteer-extra: '*'
+    peerDependenciesMeta:
+      playwright-extra:
+        optional: true
+      puppeteer-extra:
+        optional: true
+
+  puppeteer-extra-plugin-user-preferences@2.4.1:
+    resolution: {integrity: sha512-i1oAZxRbc1bk8MZufKCruCEC3CCafO9RKMkkodZltI4OqibLFXF3tj6HZ4LZ9C5vCXZjYcDWazgtY69mnmrQ9A==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      playwright-extra: '*'
+      puppeteer-extra: '*'
+    peerDependenciesMeta:
+      playwright-extra:
+        optional: true
+      puppeteer-extra:
+        optional: true
 
   puppeteer-extra-plugin@3.2.3:
     resolution: {integrity: sha512-6RNy0e6pH8vaS3akPIKGg28xcryKscczt4wIl0ePciZENGE2yoaQJNd17UiEbdmh5/6WW6dPcfRWT9lxBwCi2Q==}
@@ -14536,6 +14753,10 @@ packages:
 
   run-async@2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
+    engines: {node: '>=0.12.0'}
+
+  run-async@3.0.0:
+    resolution: {integrity: sha512-540WwVDOMxA6dN6We19EcT9sc3hkXPw5mzRNGM3FkdN/vtE9NFvj5lFAPNwUDmJjXidm3v7TC1cTE7t17Ulm1Q==}
     engines: {node: '>=0.12.0'}
 
   run-parallel@1.2.0:
@@ -15385,8 +15606,14 @@ packages:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
     engines: {node: '>=14.0.0'}
 
+  tldts-core@5.7.112:
+    resolution: {integrity: sha512-mutrEUgG2sp0e/MIAnv9TbSLR0IPbvmAImpzqul5O/HJ2XM1/I1sajchQ/fbj0fPdA31IiuWde8EUhfwyldY1Q==}
+
   tldts-core@6.1.65:
     resolution: {integrity: sha512-Uq5t0N0Oj4nQSbU8wFN1YYENvMthvwU13MQrMJRspYCGLSAZjAfoBOJki5IQpnBM/WFskxxC/gIOTwaedmHaSg==}
+
+  tldts-experimental@5.7.112:
+    resolution: {integrity: sha512-Nq5qWN4OiLziAOOOEoSME7cZI4Hz8Srt+9q6cl8mZ5EAhCfmeE6l7K5XjuIKN+pySuGUvthE5aPiD185YU1/lg==}
 
   tldts-experimental@6.1.65:
     resolution: {integrity: sha512-kH8tfKJzRGMK2+azeAHHG8j0wJf/oQK3g//IFhcyh0lyCQKR78FgLhBLyuzSP7eEcvaNYRpjA0cVTljztMyg/A==}
@@ -16630,6 +16857,10 @@ packages:
   yocto-queue@1.1.1:
     resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
     engines: {node: '>=12.20'}
+
+  yoctocolors-cjs@2.1.2:
+    resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
+    engines: {node: '>=18'}
 
   yoctocolors@2.1.1:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
@@ -18426,6 +18657,13 @@ snapshots:
       '@cliqz/adblocker-content': 1.34.0
       playwright: 1.48.2
       tldts-experimental: 6.1.65
+
+  '@cliqz/adblocker-puppeteer@1.23.8(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))':
+    dependencies:
+      '@cliqz/adblocker': 1.34.0
+      '@cliqz/adblocker-content': 1.34.0
+      puppeteer: 19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
+      tldts-experimental: 5.7.112
 
   '@cliqz/adblocker@1.34.0':
     dependencies:
@@ -20457,6 +20695,112 @@ snapshots:
     dependencies:
       browser-headers: 0.4.1
       google-protobuf: 3.21.4
+
+  '@inquirer/checkbox@4.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/figures': 1.0.8
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      ansi-escapes: 4.3.2
+      yoctocolors-cjs: 2.1.2
+
+  '@inquirer/confirm@5.1.0(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+
+  '@inquirer/core@10.1.1(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/figures': 1.0.8
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      ansi-escapes: 4.3.2
+      cli-width: 4.1.0
+      mute-stream: 2.0.0
+      signal-exit: 4.1.0
+      strip-ansi: 6.0.1
+      wrap-ansi: 6.2.0
+      yoctocolors-cjs: 2.1.2
+    transitivePeerDependencies:
+      - '@types/node'
+
+  '@inquirer/editor@4.2.0(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      external-editor: 3.1.0
+
+  '@inquirer/expand@4.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      yoctocolors-cjs: 2.1.2
+
+  '@inquirer/figures@1.0.8': {}
+
+  '@inquirer/input@4.1.0(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+
+  '@inquirer/number@3.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+
+  '@inquirer/password@4.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      ansi-escapes: 4.3.2
+
+  '@inquirer/prompts@7.2.0(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/checkbox': 4.0.3(@types/node@22.8.4)
+      '@inquirer/confirm': 5.1.0(@types/node@22.8.4)
+      '@inquirer/editor': 4.2.0(@types/node@22.8.4)
+      '@inquirer/expand': 4.0.3(@types/node@22.8.4)
+      '@inquirer/input': 4.1.0(@types/node@22.8.4)
+      '@inquirer/number': 3.0.3(@types/node@22.8.4)
+      '@inquirer/password': 4.0.3(@types/node@22.8.4)
+      '@inquirer/rawlist': 4.0.3(@types/node@22.8.4)
+      '@inquirer/search': 3.0.3(@types/node@22.8.4)
+      '@inquirer/select': 4.0.3(@types/node@22.8.4)
+      '@types/node': 22.8.4
+
+  '@inquirer/rawlist@4.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      yoctocolors-cjs: 2.1.2
+
+  '@inquirer/search@3.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/figures': 1.0.8
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      yoctocolors-cjs: 2.1.2
+
+  '@inquirer/select@4.0.3(@types/node@22.8.4)':
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/figures': 1.0.8
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      ansi-escapes: 4.3.2
+      yoctocolors-cjs: 2.1.2
+
+  '@inquirer/type@3.0.1(@types/node@22.8.4)':
+    dependencies:
+      '@types/node': 22.8.4
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -23783,6 +24127,8 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
+  '@types/node-cron@3.0.11': {}
+
   '@types/node-fetch@2.6.12':
     dependencies:
       '@types/node': 20.17.9
@@ -23815,6 +24161,10 @@ snapshots:
       undici-types: 6.19.8
 
   '@types/normalize-package-data@2.4.4': {}
+
+  '@types/papaparse@5.3.15':
+    dependencies:
+      '@types/node': 20.17.9
 
   '@types/parse-json@4.0.2': {}
 
@@ -25801,6 +26151,8 @@ snapshots:
 
   cli-width@3.0.0: {}
 
+  cli-width@4.1.0: {}
+
   client-only@0.0.1: {}
 
   clipboardy@4.0.0:
@@ -26689,6 +27041,8 @@ snapshots:
   date-fns@2.30.0:
     dependencies:
       '@babel/runtime': 7.26.0
+
+  date-fns@4.1.0: {}
 
   dateformat@3.0.3: {}
 
@@ -28948,6 +29302,17 @@ snapshots:
 
   inline-style-parser@0.2.4: {}
 
+  inquirer@12.2.0(@types/node@22.8.4):
+    dependencies:
+      '@inquirer/core': 10.1.1(@types/node@22.8.4)
+      '@inquirer/prompts': 7.2.0(@types/node@22.8.4)
+      '@inquirer/type': 3.0.1(@types/node@22.8.4)
+      '@types/node': 22.8.4
+      ansi-escapes: 4.3.2
+      mute-stream: 2.0.0
+      run-async: 3.0.0
+      rxjs: 7.8.1
+
   inquirer@8.2.6:
     dependencies:
       ansi-escapes: 4.3.2
@@ -29456,7 +29821,7 @@ snapshots:
 
   jest-diff@29.7.0:
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       diff-sequences: 29.6.3
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
@@ -31288,6 +31653,8 @@ snapshots:
 
   mute-stream@1.0.0: {}
 
+  mute-stream@2.0.0: {}
+
   mz@2.7.0:
     dependencies:
       any-promise: 1.3.0
@@ -31365,6 +31732,10 @@ snapshots:
   node-cache@5.1.2:
     dependencies:
       clone: 2.1.2
+
+  node-cron@3.0.3:
+    dependencies:
+      uuid: 8.3.2
 
   node-domexception@1.0.0: {}
 
@@ -31630,7 +32001,7 @@ snapshots:
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.7
       axios: 1.7.8(debug@4.4.0)
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       cliui: 8.0.1
@@ -31836,7 +32207,7 @@ snapshots:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
@@ -32017,6 +32388,8 @@ snapshots:
   pako@0.2.9: {}
 
   pako@2.1.0: {}
+
+  papaparse@5.4.1: {}
 
   param-case@3.0.4:
     dependencies:
@@ -33262,6 +33635,13 @@ snapshots:
     dependencies:
       escape-goat: 4.0.0
 
+  puppeteer-cluster@0.24.0(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)):
+    dependencies:
+      debug: 4.4.0(supports-color@5.5.0)
+      puppeteer: 19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - supports-color
+
   puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10):
     dependencies:
       '@puppeteer/browsers': 0.5.0(typescript@5.6.3)
@@ -33283,6 +33663,21 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  puppeteer-extra-plugin-adblocker@2.13.6(encoding@0.1.13)(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)):
+    dependencies:
+      '@cliqz/adblocker-puppeteer': 1.23.8(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+      debug: 4.4.0(supports-color@5.5.0)
+      node-fetch: 2.7.0(encoding@0.1.13)
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
+    optionalDependencies:
+      puppeteer: 19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
+      puppeteer-core: 19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)
+      puppeteer-extra: 3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+    transitivePeerDependencies:
+      - encoding
+      - playwright-extra
+      - supports-color
+
   puppeteer-extra-plugin-capsolver@2.0.1(bufferutil@4.0.8)(encoding@0.1.13)(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(typescript@5.6.3)(utf-8-validate@5.0.10):
     dependencies:
       axios: 1.7.8(debug@4.4.0)
@@ -33300,6 +33695,38 @@ snapshots:
       - supports-color
       - typescript
       - utf-8-validate
+
+  puppeteer-extra-plugin-stealth@2.11.2(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))):
+    dependencies:
+      debug: 4.4.0(supports-color@5.5.0)
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
+      puppeteer-extra-plugin-user-preferences: 2.4.1(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
+    optionalDependencies:
+      puppeteer-extra: 3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+    transitivePeerDependencies:
+      - supports-color
+
+  puppeteer-extra-plugin-user-data-dir@2.4.1(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))):
+    dependencies:
+      debug: 4.4.0(supports-color@5.5.0)
+      fs-extra: 10.1.0
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
+      rimraf: 3.0.2
+    optionalDependencies:
+      puppeteer-extra: 3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+    transitivePeerDependencies:
+      - supports-color
+
+  puppeteer-extra-plugin-user-preferences@2.4.1(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))):
+    dependencies:
+      debug: 4.4.0(supports-color@5.5.0)
+      deepmerge: 4.3.1
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
+      puppeteer-extra-plugin-user-data-dir: 2.4.1(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10)))
+    optionalDependencies:
+      puppeteer-extra: 3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))
+    transitivePeerDependencies:
+      - supports-color
 
   puppeteer-extra-plugin@3.2.3(puppeteer-extra@3.3.6(puppeteer-core@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))(puppeteer@19.11.1(bufferutil@4.0.8)(encoding@0.1.13)(typescript@5.6.3)(utf-8-validate@5.0.10))):
     dependencies:
@@ -34060,6 +34487,8 @@ snapshots:
       strip-json-comments: 3.1.1
 
   run-async@2.4.1: {}
+
+  run-async@3.0.0: {}
 
   run-parallel@1.2.0:
     dependencies:
@@ -35051,7 +35480,13 @@ snapshots:
 
   tinyspy@3.0.2: {}
 
+  tldts-core@5.7.112: {}
+
   tldts-core@6.1.65: {}
+
+  tldts-experimental@5.7.112:
+    dependencies:
+      tldts-core: 5.7.112
 
   tldts-experimental@6.1.65:
     dependencies:
@@ -35150,12 +35585,12 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-jest@29.2.5(@babel/core@7.26.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.26.0))(jest@29.7.0(@types/node@20.17.9))(typescript@5.6.3):
+  ts-jest@29.2.5(@babel/core@7.26.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.26.0))(esbuild@0.24.0)(jest@29.7.0(@types/node@22.8.4)(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3)))(typescript@5.6.3):
     dependencies:
       bs-logger: 0.2.6
       ejs: 3.1.10
       fast-json-stable-stringify: 2.1.0
-      jest: 29.7.0(@types/node@20.17.9)
+      jest: 29.7.0(@types/node@22.8.4)(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3))
       jest-util: 29.7.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -35168,13 +35603,14 @@ snapshots:
       '@jest/transform': 29.7.0
       '@jest/types': 29.6.3
       babel-jest: 29.7.0(@babel/core@7.26.0)
+      esbuild: 0.24.0
 
-  ts-jest@29.2.5(@babel/core@7.26.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.26.0))(jest@29.7.0(@types/node@22.8.4)(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3)))(typescript@5.6.3):
+  ts-jest@29.2.5(@babel/core@7.26.0)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.26.0))(jest@29.7.0(@types/node@20.17.9))(typescript@5.6.3):
     dependencies:
       bs-logger: 0.2.6
       ejs: 3.1.10
       fast-json-stable-stringify: 2.1.0
-      jest: 29.7.0(@types/node@22.8.4)(ts-node@10.9.2(@swc/core@1.10.0(@swc/helpers@0.5.15))(@types/node@22.8.4)(typescript@5.6.3))
+      jest: 29.7.0(@types/node@20.17.9)
       jest-util: 29.7.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -36390,6 +36826,8 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.1.1: {}
+
+  yoctocolors-cjs@2.1.2: {}
 
   yoctocolors@2.1.1: {}
 

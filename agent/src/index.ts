@@ -50,6 +50,15 @@ import path from "path";
 import readline from "readline";
 import { fileURLToPath } from "url";
 import yargs from "yargs";
+import { mainCharacter } from "../mainCharacter.ts";
+import { timeProvider } from "./providers/index.ts";
+import { randomUUID } from "crypto";
+import { bioProvider, content } from "./providers/data.ts";
+import { helloWordAction } from "./actions/hello_world.ts";
+import { newsAction } from "./actions/news_action.ts";
+import { twitterProvider } from "./providers/twitter.ts";
+import { analyzeTokenAction } from "./actions/token.ts";
+import { analyzeWalletAction } from "./actions/wallet.ts";
 
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename); // get the name of the directory
@@ -186,7 +195,7 @@ export async function loadCharacters(
 
     if (loadedCharacters.length === 0) {
         elizaLogger.info("No characters found, using default character");
-        loadedCharacters.push(defaultCharacter);
+        loadedCharacters.push(mainCharacter);
     }
 
     return loadedCharacters;
@@ -295,6 +304,7 @@ function initializeDatabase(dataDir: string) {
             })
             .catch((error) => {
                 elizaLogger.error("Failed to connect to PostgreSQL:", error);
+                console.error("Connection failed:", error.message);
             });
 
         return db;
@@ -406,7 +416,12 @@ export function createAgent(
                 : null,
             ...(getSecret(character, "COINBASE_API_KEY") &&
             getSecret(character, "COINBASE_PRIVATE_KEY")
-                ? [coinbaseMassPaymentsPlugin, tradePlugin, tokenContractPlugin, advancedTradePlugin]
+                ? [
+                      coinbaseMassPaymentsPlugin,
+                      tradePlugin,
+                      tokenContractPlugin,
+                      advancedTradePlugin,
+                  ]
                 : []),
             getSecret(character, "COINBASE_API_KEY") &&
             getSecret(character, "COINBASE_PRIVATE_KEY") &&
@@ -422,7 +437,12 @@ export function createAgent(
             getSecret(character, "APTOS_PRIVATE_KEY") ? aptosPlugin : null,
         ].filter(Boolean),
         providers: [],
-        actions: [],
+        actions: [
+            helloWordAction,
+            newsAction,
+            analyzeTokenAction,
+            analyzeWalletAction,
+        ],
         services: [],
         managers: [],
         cacheManager: cache,
@@ -468,6 +488,9 @@ async function startAgent(character: Character, directClient) {
 
         directClient.registerAgent(runtime);
 
+        // do the dirty work here
+        runtime.registerContextProvider(timeProvider);
+
         return clients;
     } catch (error) {
         elizaLogger.error(
@@ -488,7 +511,7 @@ const startAgents = async () => {
 
     let charactersArg = args.characters || args.character;
 
-    let characters = [defaultCharacter];
+    let characters = [mainCharacter];
 
     if (charactersArg) {
         characters = await loadCharacters(charactersArg);
