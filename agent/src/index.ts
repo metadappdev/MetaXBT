@@ -59,6 +59,8 @@ import { newsAction } from "./actions/news_action.ts";
 import { twitterProvider } from "./providers/twitter.ts";
 import { analyzeTokenAction } from "./actions/token.ts";
 import { analyzeWalletAction } from "./actions/wallet.ts";
+import { webSearchAction } from "./actions/web_search.ts";
+import { webSearchProvider } from "./providers/web_search.ts";
 
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename); // get the name of the directory
@@ -436,12 +438,13 @@ export function createAgent(
                 : null,
             getSecret(character, "APTOS_PRIVATE_KEY") ? aptosPlugin : null,
         ].filter(Boolean),
-        providers: [],
+        providers: [webSearchProvider],
         actions: [
             helloWordAction,
             newsAction,
             analyzeTokenAction,
             analyzeWalletAction,
+            webSearchAction,
         ],
         services: [],
         managers: [],

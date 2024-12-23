@@ -52,6 +52,7 @@
     "dependencies": {
         "@0glabs/0g-ts-sdk": "0.2.1",
         "@coinbase/coinbase-sdk": "0.10.0",
+        "@tavily/core": "^0.0.2",
         "@vitest/eslint-plugin": "1.0.1",
         "amqplib": "0.10.5",
         "axios": "1.7.8",
