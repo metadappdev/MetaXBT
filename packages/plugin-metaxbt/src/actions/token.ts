@@ -437,5 +437,20 @@ export const analyzeTokenAction: Action = {
                 content: { text: "", action: "ANALYZE_TOKEN" },
             },
         ],
+
+
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Can you analyze ${{token}}?",
+                },
+            },
+
+            {
+                user: "{{user2}}",
+                content: { text: "${{token}} has seen a 75% volume spike in 24 hours, with whale wallets adding liquidity. Price is up 20%, signaling momentum. 🚀 Monitor closely for sustainability.", action: "ANALYZE_TOKEN" },
+            },
+        ],
     ],
 };

@@ -394,5 +394,21 @@ export const analyzeWalletAction: Action = {
                 content: { text: "", action: "ANALYZE_WALLET" },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "What’s the story with this wallet {{walletAddress}}",
+                },
+            },
+
+            {
+                user: "{{user2}}",
+                content: {
+                    text: "This wallet has a 90% win rate across 300 trades, with $500K in realized gains. Recently active on $XYZ, adding 10% liquidity. Consistent with a high-risk, high-reward trading style.",
+                    action: "ANALYZE_WALLET",
+                },
+            },
+        ],
     ],
 };
