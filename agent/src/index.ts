@@ -6,7 +6,7 @@ import { FarcasterAgentClient } from "@elizaos/client-farcaster";
 import { LensAgentClient } from "@elizaos/client-lens";
 import { SlackClientInterface } from "@elizaos/client-slack";
 import { TelegramClientInterface } from "@elizaos/client-telegram";
-import { TwitterClientInterface } from "@elizaos/client-twitter";
+// import { TwitterClientInterface } from "@elizaos/client-twitter";
 import {
     AgentRuntime,
     CacheManager,
@@ -413,12 +413,12 @@ export async function initializeClients(
         if (telegramClient) clients.telegram = telegramClient;
     }
 
-    if (clientTypes.includes(Clients.TWITTER)) {
-        const twitterClient = await TwitterClientInterface.start(runtime);
-        if (twitterClient) {
-            clients.twitter = twitterClient;
-        }
-    }
+    // if (clientTypes.includes(Clients.TWITTER)) {
+    //     const twitterClient = await TwitterClientInterface.start(runtime);
+    //     if (twitterClient) {
+    //         clients.twitter = twitterClient;
+    //     }
+    // }
 
     if (clientTypes.includes(Clients.FARCASTER)) {
         // why is this one different :(
