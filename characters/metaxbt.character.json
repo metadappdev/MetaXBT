@@ -1,6 +1,6 @@
 {
     "name": "MetaXBT",
-    "clients": ["telegram", "twitter"],
+    "clients": ["twitter"],
     "modelProvider": "openai",
     "settings": {
         "secrets": {},
