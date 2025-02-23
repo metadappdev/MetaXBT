@@ -8,6 +8,7 @@ import {
     generateImage,
     Media,
     getEmbeddingZeroVector,
+    Clients,
 } from "@elizaos/core";
 import { composeContext } from "@elizaos/core";
 import { generateMessageResponse } from "@elizaos/core";
@@ -25,6 +26,8 @@ import { settings } from "@elizaos/core";
 import { createApiRouter } from "./api.ts";
 import * as fs from "fs";
 import * as path from "path";
+import ComposeTweet from "./utils.ts";
+import { postTweet } from "./post.ts";
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -381,7 +384,146 @@ export class DirectClient {
                 await runtime.messageManager.addEmbeddingToMemory(memory);
                 await runtime.messageManager.createMemory(memory);
 
-                res.status(201).send("Ok");
+                let state = await runtime.composeState(userMessage, {
+                    agentName: runtime.character.name,
+                });
+
+                const context = composeContext({
+                    state,
+                    template: messageHandlerTemplate,
+                });
+
+                const response = await generateMessageResponse({
+                    runtime: runtime,
+                    context,
+                    modelClass: ModelClass.SMALL,
+                });
+
+                if (!response) {
+                    res.status(500).send(
+                        "No response from generateMessageResponse"
+                    );
+                    return;
+                }
+
+                // save response to memory
+                const responseMessage: Memory = {
+                    id: stringToUuid(messageId + "-" + runtime.agentId),
+                    ...userMessage,
+                    userId: runtime.agentId,
+                    content: response,
+                    embedding: getEmbeddingZeroVector(),
+                    createdAt: Date.now(),
+                };
+
+                await runtime.messageManager.createMemory(responseMessage);
+
+                state = await runtime.updateRecentMessageState(state);
+
+                let message = null as Content | null;
+
+                await runtime.processActions(
+                    memory,
+                    [responseMessage],
+                    state,
+                    async (newMessages) => {
+                        message = newMessages;
+                        return [memory];
+                    }
+                );
+
+                await runtime.evaluate(memory, state);
+
+                res.json([response, message]);
+            }
+        );
+
+        this.app.post(
+            "/:agentId/tweet",
+            upload.single("file"),
+            async (req: express.Request, res: express.Response) => {
+                const agentId = req.params.agentId;
+                const roomId = stringToUuid(
+                    req.body.roomId ?? "default-room-" + agentId
+                );
+                const userId = stringToUuid(req.body.userId ?? "user");
+
+                let runtime = this.agents.get(agentId);
+
+                // if runtime is null, look for runtime with the same name
+                if (!runtime) {
+                    runtime = Array.from(this.agents.values()).find(
+                        (a) =>
+                            a.character.name.toLowerCase() ===
+                            agentId.toLowerCase()
+                    );
+                }
+
+                if (!runtime) {
+                    res.status(404).send("Agent not found");
+                    return;
+                }
+
+                if (!runtime.clients[Clients.TWITTER]) {
+                    res.status(404).send(
+                        "Agent runtime does not include a twitter client"
+                    );
+                    return;
+                }
+
+                await runtime.ensureConnection(
+                    userId,
+                    roomId,
+                    req.body.userName,
+                    req.body.name,
+                    "direct"
+                );
+
+                const text = req.body.text;
+                const messageId = stringToUuid(Date.now().toString());
+                if (!text) {
+                    res.status(400).send("text is required");
+                    return;
+                }
+                const content: Content = {
+                    text,
+                    source: "direct",
+                    inReplyTo: undefined,
+                };
+
+                const userMessage = {
+                    content,
+                    userId,
+                    roomId,
+                    agentId: runtime.agentId,
+                };
+
+                const memory: Memory = {
+                    id: stringToUuid(messageId + "-" + userId),
+                    ...userMessage,
+                    agentId: runtime.agentId,
+                    userId,
+                    roomId,
+                    content,
+                    createdAt: Date.now(),
+                };
+                elizaLogger.log(">>> memory", memory);
+
+                await runtime.messageManager.addEmbeddingToMemory(memory);
+                await runtime.messageManager.createMemory(memory);
+                const state = await runtime.composeState(userMessage, {
+                    agentName: runtime.character.name,
+                });
+
+                elizaLogger.log(">>> state", state);
+
+                const newTweet = await ComposeTweet(runtime, memory, state);
+
+                elizaLogger.log(">>> newTweet", newTweet);
+
+                const isPosted = await postTweet(newTweet);
+
+                res.json({ text, messageId, newTweet, isPosted });
             }
         );
 
