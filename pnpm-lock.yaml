@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  agent-twitter-client: github:timmyg/agent-twitter-client#main
   onnxruntime-node: 1.20.1
 
 importers:
@@ -129,6 +130,9 @@ importers:
       '@elizaos/client-telegram':
         specifier: workspace:*
         version: link:../packages/client-telegram
+      '@elizaos/client-twitter':
+        specifier: workspace:*
+        version: link:../packages/client-twitter
       '@elizaos/core':
         specifier: workspace:*
         version: link:../packages/core
@@ -219,6 +223,9 @@ importers:
       '@elizaos/plugin-ton':
         specifier: workspace:*
         version: link:../packages/plugin-ton
+      '@elizaos/plugin-twitter':
+        specifier: workspace:*
+        version: link:../packages/plugin-twitter
       '@elizaos/plugin-web-search':
         specifier: workspace:*
         version: link:../packages/plugin-web-search
@@ -555,6 +562,9 @@ importers:
       '@types/express':
         specifier: 5.0.0
         version: 5.0.0
+      agent-twitter-client:
+        specifier: github:timmyg/agent-twitter-client#main
+        version: https://codeload.github.com/timmyg/agent-twitter-client/tar.gz/37445059ddc96d0504de7ca9e37b856c28e6fa40(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       body-parser:
         specifier: 1.20.3
         version: 1.20.3
@@ -710,6 +720,28 @@ importers:
       telegraf:
         specifier: 4.16.3
         version: 4.16.3(encoding@0.1.13)
+      zod:
+        specifier: 3.23.8
+        version: 3.23.8
+    devDependencies:
+      tsup:
+        specifier: 8.3.5
+        version: 8.3.5(@swc/core@1.10.11(@swc/helpers@0.5.15))(jiti@2.4.2)(postcss@8.4.49)(typescript@5.6.3)(yaml@2.7.0)
+
+  packages/client-twitter:
+    dependencies:
+      '@elizaos/core':
+        specifier: workspace:*
+        version: link:../core
+      agent-twitter-client:
+        specifier: github:timmyg/agent-twitter-client#main
+        version: https://codeload.github.com/timmyg/agent-twitter-client/tar.gz/37445059ddc96d0504de7ca9e37b856c28e6fa40(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      glob:
+        specifier: 11.0.0
+        version: 11.0.0
+      whatwg-url:
+        specifier: 7.1.0
+        version: 7.1.0
       zod:
         specifier: 3.23.8
         version: 3.23.8
@@ -1809,6 +1841,18 @@ importers:
       '@types/dompurify':
         specifier: 3.2.0
         version: 3.2.0
+
+  packages/plugin-twitter:
+    dependencies:
+      '@elizaos/core':
+        specifier: workspace:*
+        version: link:../core
+      agent-twitter-client:
+        specifier: github:timmyg/agent-twitter-client#main
+        version: https://codeload.github.com/timmyg/agent-twitter-client/tar.gz/37445059ddc96d0504de7ca9e37b856c28e6fa40(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      tsup:
+        specifier: 8.3.5
+        version: 8.3.5(@swc/core@1.10.11(@swc/helpers@0.5.15))(jiti@2.4.2)(postcss@8.4.49)(typescript@5.6.3)(yaml@2.7.0)
 
   packages/plugin-video-generation:
     dependencies:
@@ -6747,6 +6791,9 @@ packages:
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
+  '@sinclair/typebox@0.32.35':
+    resolution: {integrity: sha512-Ul3YyOTU++to8cgNkttakC0dWvpERr6RYoHO2W47DLbFvrwBDJUY31B1sImH6JZSYc4Kt4PyHtoPNu+vL2r2dA==}
+
   '@sindresorhus/is@4.6.0':
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
     engines: {node: '>=10'}
@@ -8452,6 +8499,10 @@ packages:
   agent-base@7.1.3:
     resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
     engines: {node: '>= 14'}
+
+  agent-twitter-client@https://codeload.github.com/timmyg/agent-twitter-client/tar.gz/37445059ddc96d0504de7ca9e37b856c28e6fa40:
+    resolution: {tarball: https://codeload.github.com/timmyg/agent-twitter-client/tar.gz/37445059ddc96d0504de7ca9e37b856c28e6fa40}
+    version: 0.0.18
 
   agentkeepalive@4.6.0:
     resolution: {integrity: sha512-kja8j7PjmncONqaTsB8fQ+wE2mSU2DJ9D4XKoJ5PFWIdRMa6SLSN1ff4mOr4jCbfRSsxR4keIiySJU0N9T5hIQ==}
@@ -12079,6 +12130,9 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
 
+  headers-polyfill@3.3.0:
+    resolution: {integrity: sha512-5e57etwBpNcDc0b6KCVWEh/Ro063OxPvzVimUdM0/tsYM/T7Hfy3kknIGj78SFTOhNd8AZY41U8mOHoO4LzmIQ==}
+
   hey-listen@1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
 
@@ -14750,6 +14804,9 @@ packages:
   os-tmpdir@1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
+
+  otpauth@9.3.6:
+    resolution: {integrity: sha512-eIcCvuEvcAAPHxUKC9Q4uCe0Fh/yRc5jv9z+f/kvyIF2LPrhgAOuLB7J9CssGYhND/BL8M9hlHBTFmffpoQlMQ==}
 
   own-keys@1.0.1:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
@@ -17795,6 +17852,10 @@ packages:
     resolution: {integrity: sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g==}
     engines: {node: '>=0.8'}
 
+  tough-cookie@4.1.4:
+    resolution: {integrity: sha512-Loo5UUvLD9ScZ6jh8beX1T6sO1w2/MpCRpEP7V280GKMVUQ0Jzar2U3UJPsrdbziLEMMhu3Ujnq//rhiFuIeag==}
+    engines: {node: '>=6'}
+
   tough-cookie@5.1.0:
     resolution: {integrity: sha512-rvZUv+7MoBYTiDmFPBrhL7Ujx9Sk+q9wwm22x8c8T5IJaR+Wsyc7TNxbVxo84kZoRJZZMazowFLqpankBEQrGg==}
     engines: {node: '>=16'}
@@ -17998,6 +18059,9 @@ packages:
   tweetnacl@1.0.3:
     resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
 
+  twitter-api-v2@1.19.0:
+    resolution: {integrity: sha512-jfG4aapNPM9+4VxNxn0TXvD8Qj8NmVx6cY0hp5K626uZ41qXPaJz33Djd3y6gfHF/+W29+iZz0Y5qB869d/akA==}
+
   tx2@1.0.5:
     resolution: {integrity: sha512-sJ24w0y03Md/bxzK4FU8J8JveYYUbSs2FViLJ2D/8bytSiyPRbuE3DyL/9UKYXTZlV3yXq0L8GLlhobTnekCVg==}
 
@@ -18184,6 +18248,9 @@ packages:
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
+  undici-types@7.3.0:
+    resolution: {integrity: sha512-z2pHpkN2BEJl3QlQo0GtfGCyuhuBbWX60vzGwyn7ex/seM2UkvyGEfEV0Qb9pXc5StNfcJpsstgaf2YTEJa63Q==}
+
   undici@5.28.5:
     resolution: {integrity: sha512-zICwjrDrcrUE0pyyJc1I2QzBkLM8FINsgOrt6WjA+BgajVq9Nxu2PbFFXUrAggLfDXlZGZBVZYw7WNV5KiBiBA==}
     engines: {node: '>=14.0'}
@@ -18191,6 +18258,10 @@ packages:
   undici@6.19.8:
     resolution: {integrity: sha512-U8uCCl2x9TK3WANvmBavymRzxbfFYG+tAu+fgx3zxQy3qdagQqBLwJVrdyO1TBfUXvfKveMKJZhpvUYoOjM+4g==}
     engines: {node: '>=18.17'}
+
+  undici@7.3.0:
+    resolution: {integrity: sha512-Qy96NND4Dou5jKoSJ2gm8ax8AJM/Ey9o9mz7KN1bb9GP+G0l20Zw8afxTnY2f4b7hmhn/z8aC2kfArVQlAhFBw==}
+    engines: {node: '>=20.18.1'}
 
   unenv@1.10.0:
     resolution: {integrity: sha512-wY5bskBQFL9n3Eca5XnhH6KbUo/tfvkwm9OpcdCvLaeA7piBNbavbOKJySEwQ1V0RH6HvNlSAFRTpvTqgKRQXQ==}
@@ -18291,6 +18362,10 @@ packages:
 
   universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
+    engines: {node: '>= 4.0.0'}
+
+  universalify@0.2.0:
+    resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
     engines: {node: '>= 4.0.0'}
 
   universalify@2.0.1:
@@ -26650,6 +26725,8 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
+  '@sinclair/typebox@0.32.35': {}
+
   '@sindresorhus/is@4.6.0': {}
 
   '@sindresorhus/is@5.6.0': {}
@@ -29180,6 +29257,22 @@ snapshots:
       - supports-color
 
   agent-base@7.1.3: {}
+
+  agent-twitter-client@https://codeload.github.com/timmyg/agent-twitter-client/tar.gz/37445059ddc96d0504de7ca9e37b856c28e6fa40(bufferutil@4.0.9)(utf-8-validate@5.0.10):
+    dependencies:
+      '@sinclair/typebox': 0.32.35
+      headers-polyfill: 3.3.0
+      json-stable-stringify: 1.2.1
+      otpauth: 9.3.6
+      set-cookie-parser: 2.7.1
+      tough-cookie: 4.1.4
+      twitter-api-v2: 1.19.0
+      undici: 7.3.0
+      undici-types: 7.3.0
+      ws: 8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   agentkeepalive@4.6.0:
     dependencies:
@@ -32855,7 +32948,7 @@ snapshots:
 
   extract-zip@2.0.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.4.0(supports-color@8.1.1)
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -33984,6 +34077,8 @@ snapshots:
       space-separated-tokens: 2.0.2
 
   he@1.2.0: {}
+
+  headers-polyfill@3.3.0: {}
 
   hey-listen@1.0.8: {}
 
@@ -37137,7 +37232,7 @@ snapshots:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.2
 
   mustache@4.0.0: {}
 
@@ -37809,6 +37904,10 @@ snapshots:
   os-browserify@0.3.0: {}
 
   os-tmpdir@1.0.2: {}
+
+  otpauth@9.3.6:
+    dependencies:
+      '@noble/hashes': 1.6.1
 
   own-keys@1.0.1:
     dependencies:
@@ -41355,6 +41454,13 @@ snapshots:
       psl: 1.15.0
       punycode: 2.3.1
 
+  tough-cookie@4.1.4:
+    dependencies:
+      psl: 1.15.0
+      punycode: 2.3.1
+      universalify: 0.2.0
+      url-parse: 1.5.10
+
   tough-cookie@5.1.0:
     dependencies:
       tldts: 6.1.75
@@ -41637,6 +41743,8 @@ snapshots:
 
   tweetnacl@1.0.3: {}
 
+  twitter-api-v2@1.19.0: {}
+
   tx2@1.0.5:
     dependencies:
       json-stringify-safe: 5.0.1
@@ -41840,11 +41948,15 @@ snapshots:
 
   undici-types@6.20.0: {}
 
+  undici-types@7.3.0: {}
+
   undici@5.28.5:
     dependencies:
       '@fastify/busboy': 2.1.1
 
   undici@6.19.8: {}
+
+  undici@7.3.0: {}
 
   unenv@1.10.0:
     dependencies:
@@ -41962,6 +42074,8 @@ snapshots:
   universal-user-agent@7.0.2: {}
 
   universalify@0.1.2: {}
+
+  universalify@0.2.0: {}
 
   universalify@2.0.1: {}
 

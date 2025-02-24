@@ -103,8 +103,7 @@ export class AgentRuntime implements IAgentRuntime {
      */
     imageModelProvider: ModelProviderName;
 
-
-     /**
+    /**
      * The model to use for describing images.
      */
     imageVisionModelProvider: ModelProviderName;
@@ -331,14 +330,13 @@ export class AgentRuntime implements IAgentRuntime {
         );
 
         this.imageVisionModelProvider =
-        this.character.imageVisionModelProvider ?? this.modelProvider;
+            this.character.imageVisionModelProvider ?? this.modelProvider;
 
         elizaLogger.info("Selected model provider:", this.modelProvider);
-         elizaLogger.info(
+        elizaLogger.info(
             "Selected image model provider:",
             this.imageVisionModelProvider
-         );
-
+        );
 
         // Validate model provider
         if (!Object.values(ModelProviderName).includes(this.modelProvider)) {
@@ -426,22 +424,27 @@ export class AgentRuntime implements IAgentRuntime {
     }
 
     async stop() {
-      elizaLogger.debug('runtime::stop - character', this.character)
-      // stop services, they don't have a stop function
+        elizaLogger.debug("runtime::stop - character", this.character);
+        // stop services, they don't have a stop function
         // just initialize
 
-      // plugins
+        // plugins
         // have actions, providers, evaluators (no start/stop)
         // services (just initialized), clients
 
-      // client have a start
-      for(const cStr in this.clients) {
-        const c = this.clients[cStr]
-        elizaLogger.log('runtime::stop - requesting', cStr, 'client stop for', this.character.name)
-        c.stop()
-      }
-      // we don't need to unregister with directClient
-      // don't need to worry about knowledge
+        // client have a start
+        for (const cStr in this.clients) {
+            const c = this.clients[cStr];
+            elizaLogger.log(
+                "runtime::stop - requesting",
+                cStr,
+                "client stop for",
+                this.character.name
+            );
+            c.stop();
+        }
+        // we don't need to unregister with directClient
+        // don't need to worry about knowledge
     }
 
     /**
@@ -788,7 +791,7 @@ export class AgentRuntime implements IAgentRuntime {
         message: Memory,
         additionalKeys: { [key: string]: unknown } = {}
     ) {
-        const { userId, roomId } = message;
+        const { userId, roomId, content } = message;
 
         const conversationLength = this.getConversationLength();
 
@@ -1227,7 +1230,7 @@ Text: ${attachment.text}
             ),
         };
 
-        return { ...initialState, ...actionState } as State;
+        return { ...initialState, ...actionState, text: content?.text ?? "Nil" } as State;
     }
 
     async updateRecentMessageState(state: State): Promise<State> {
